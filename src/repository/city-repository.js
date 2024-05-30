@@ -27,11 +27,12 @@ class CityRepository{
     async getCity(cityId){
         //we can use either findOne or findByPK
         try{
-            const city=await City.findByPk(cityId);
-            return city
+            const city1=await City.findByPk(cityId);
+            return city1;
         }catch(err){
-                console.log("error happened at repository level");
+            console.log("error happened at repository level");
             throw{err}
+            // return "not found error happened"
         }
         
     }
