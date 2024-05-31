@@ -1,4 +1,5 @@
 const {City}=require("../models/index")
+const {Op}=require("sequelize")
 
 class CityRepository{
     async createCity({name}){
@@ -56,8 +57,24 @@ class CityRepository{
         }
     }
 
-    async getAllCities(){
+    async getAllCities(filter){
+        //here filter will be null or object containing name
         try{
+
+            //ie. if name query exist
+            //then fetch city with those names
+            //else fetch all the cities
+            if(filter.name){//search city starting with this name
+                const cities=await City.findAll({
+                    where:{
+                        name:{
+                            [Op.like]:`${filter.name}%`
+                        }
+                    }
+                })
+
+                return cities;
+            }
 
             const cities=await City.findAll();
             return cities;

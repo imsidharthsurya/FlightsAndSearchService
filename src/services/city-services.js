@@ -47,10 +47,11 @@ class CityService{
         }
     }
 
-    async getAllCities(){
+    async getAllCities(filter){
+        //here filter will be query objects containing all query parameters
         try{
 
-            const cities=this.cityRepository.getAllCities();
+            const cities=this.cityRepository.getAllCities({name:filter.name});
             return cities;
         }catch(err){
             console.log("error happened at service level");
