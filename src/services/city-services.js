@@ -46,6 +46,17 @@ class CityService{
             throw {err};
         }
     }
+
+    async getAllCities(){
+        try{
+
+            const cities=this.cityRepository.getAllCities();
+            return cities;
+        }catch(err){
+            console.log("error happened at service level");
+            throw {err};
+        }
+    }
 }
 
 module.exports=CityService

@@ -55,6 +55,17 @@ class CityRepository{
             throw {err}
         }
     }
+
+    async getAllCities(){
+        try{
+
+            const cities=await City.findAll();
+            return cities;
+        }catch(err){
+            console.log("error happened at repository level");
+            throw{err};
+        }
+    }
 }
 
 module.exports=CityRepository
