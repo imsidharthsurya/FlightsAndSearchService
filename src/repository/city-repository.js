@@ -83,6 +83,17 @@ class CityRepository{
             throw{err};
         }
     }
+
+    async createMultipleCities(data){
+        //here data will be array of object
+        try{
+            const cities=await City.bulkCreate(data);
+            return cities;
+        }catch(err){
+            console.log("error happened at repository level");
+            throw {err};
+        }
+    }
 }
 
 module.exports=CityRepository

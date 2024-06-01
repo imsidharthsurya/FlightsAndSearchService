@@ -58,6 +58,16 @@ class CityService{
             throw {err};
         }
     }
+
+    async createMultipleCities(data){
+        try{
+            const cities=await this.cityRepository.createMultipleCities(data);
+            return cities;
+        }catch(err){
+            console.log("error happened at service level");
+            throw {err};
+        }
+    }
 }
 
 module.exports=CityService
