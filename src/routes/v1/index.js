@@ -15,5 +15,7 @@ router.get("/city",CityController.getAll);
 
 router.post("/cities",CityController.createMultiple);
 
+router.get("/city/airport/:id",CityController.getAllAirports);
+
 module.exports=router
 

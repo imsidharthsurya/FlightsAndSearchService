@@ -138,11 +138,31 @@ const createMultiple=async(req,res)=>{
     }
 }
 
+const getAllAirports=async (req,res)=>{
+    try{
+        const airports=await cityService.getAllAirports(req.params.id);
+        return res.status(200).json({
+            data:airports,
+            success:true,
+            message:"Airports of city fetched",
+            err:{}
+        })
+    }catch(err){
+        return res.status(500).json({
+            data:{},
+            success:false,
+            message:"Unable to fetch airport of this city",
+            err:err
+        })
+    }
+}
+
 module.exports={
     create,
     destroy,
     update,
     get,
     getAll,
-    createMultiple
+    createMultiple,
+    getAllAirports
 }

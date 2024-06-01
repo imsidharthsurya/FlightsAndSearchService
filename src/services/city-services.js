@@ -68,6 +68,16 @@ class CityService{
             throw {err};
         }
     }
+
+    async getAllAirports(cityId){
+        try{
+            const airports=await this.cityRepository.getAllAirports(cityId);
+            return airports;
+        }catch(err){
+            console.log("error happenend at service level");
+            throw {err};
+        }
+    }
 }
 
 module.exports=CityService

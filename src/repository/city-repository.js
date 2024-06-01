@@ -94,6 +94,18 @@ class CityRepository{
             throw {err};
         }
     }
+
+    async getAllAirports(cityId){
+        try{
+            const city=await City.findByPk(cityId);
+            const airports=await city.getAirports();
+            //above will work b/c of db synchronization
+            return airports;
+        }catch(err){
+            console.log("error happened at repository level");
+            throw {err};
+        }
+    }
 }
 
 module.exports=CityRepository
