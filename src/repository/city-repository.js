@@ -7,7 +7,7 @@ class CityRepository{
             const city=await City.create({name})
             return city;
         }catch(err){
-                console.log("error happened at repository level");    
+            console.log("error happened at repository level");    
             throw{err}
         }
     }
