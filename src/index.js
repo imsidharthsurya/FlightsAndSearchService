@@ -6,7 +6,7 @@ const apiRoutes=require("./routes/index")
 
 // const {Airport,City}=require("./models/index")
 const db=require("./models/index")
-const {City,Airport}=require("./models/index")
+const {City,Airport,Airplane}=require("./models/index")
 const setupAndStartServer=async()=>{
     const app=express();
     // const PORT=3000;
@@ -22,17 +22,6 @@ const setupAndStartServer=async()=>{
             await db.sequelize.sync({alter:true})
         }
         
-        // const city=await City.findOne({
-        //     where:{
-        //         id:14
-        //     }
-        // })
-        // const airports=await city.getAirports();
-        // await Airport.create({
-        //     name:"Darbhanga Airport",
-        //     cityId:4
-        // })
-        // console.log(airports)
     })
 }
 
