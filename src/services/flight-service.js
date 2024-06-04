@@ -28,6 +28,16 @@ class FlightService{
             throw {err};
         }
     }
+
+    async getAllFlights(data){
+        try{
+            const flights=await this.flightRepository.getAllFlight(data);
+            return flights;
+        }catch(err){
+            console.log("error happened at flight service layer");
+            throw {err};
+        }
+    }
 }
 
 

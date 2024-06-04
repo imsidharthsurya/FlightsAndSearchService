@@ -22,6 +22,7 @@ router.get("/city/airport/:id",CityController.getAllAirports);
 //flight crud endpoints
 
 router.post("/flights",FlightController.createFlight);
+router.get("/flights",FlightController.getAllFlight);
 
 module.exports=router
 
