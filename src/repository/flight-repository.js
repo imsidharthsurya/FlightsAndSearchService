@@ -12,6 +12,26 @@ class FlightRepository{
             throw{err}
         }
     }
+
+    async getFlight(flightId){
+        try{
+            const flight=await Flight.findByPk(flightId);
+            return flight;
+        }catch(err){
+            console.log("error happened at flight repository level");    
+            throw{err}
+        }
+    }
+
+    async getAllFlight(){
+        try{
+            const flights=await Flight.findAll();
+            return flights;
+        }catch(err){
+            console.log("error happened at flight repository level");    
+            throw{err}
+        }
+    }
 }
 
 module.exports=FlightRepository
