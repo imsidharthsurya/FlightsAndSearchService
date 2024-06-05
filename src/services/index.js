@@ -1,6 +1,6 @@
-const FlightService = require("./flight-service");
-
 module.exports={
     CityService:require("./city-services"),
-    FlightService:require("./flight-service")
+    FlightService:require("./flight-service"),
+    AirportService:require("./airport-services"),
+    CrudService:require("./crud-services")
 }
