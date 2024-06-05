@@ -1,5 +1,5 @@
 const {FlightService}=require("../services/index");
-
+const {ClientErrorsCodes,ServerErrorsCodes,SuccessCodes}=require("../utils/error-codes")
 const flightService=new FlightService();
 
 const createFlight=async(req,res)=>{
@@ -14,7 +14,7 @@ const createFlight=async(req,res)=>{
             price:req.body.price
         }
         const flight=await flightService.createFlight(flightBodyObj);
-        return res.status(201).json({
+        return res.status(SuccessCodes.CREATED).json({
             data:flight,
             success:true,
             message:"Flight created successfully",
@@ -22,7 +22,7 @@ const createFlight=async(req,res)=>{
         })
     }catch(err){
         // console.log(err);
-        return res.status(500).json({
+        return res.status(ServerErrorsCodes.INTERNAL_SERVER_ERROR).json({
             data:{},
             success:false,
             message:"Not able to create a flight",
@@ -34,14 +34,14 @@ const createFlight=async(req,res)=>{
 const getAllFlight=async(req,res)=>{
     try{
         const flights=await flightService.getAllFlights(req.query);
-        return res.status(200).json({
+        return res.status(SuccessCodes.OK).json({
             data:flights,
             success:true,
             message:"Successfully fetched all flights data",
             err:{}
         });
     }catch(err){
-        return res.status(500).json({
+        return res.status(ServerErrorsCodes.INTERNAL_SERVER_ERROR).json({
             data:{},
             success:false,
             message:"Not able to get all flights",
