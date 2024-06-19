@@ -29,6 +29,7 @@ router.get("/city/airport/:id",CityController.getAllAirports);
 router.post("/flights",flightMiddlewares.validateCreateFlight,FlightController.createFlight);
 router.get("/flights",FlightController.getAllFlight);
 router.get("/flight/:id",FlightController.getFlight);
+router.patch("/flight/:id",FlightController.updateFlight)
 
 //airport crud endpoints
 router.post("/airport",AirportController.create);

@@ -69,8 +69,28 @@ const getFlight=async (req,res)=>{
     }
 }
 
+const updateFlight=async(req,res)=>{
+    try{
+        const result=await flightService.updateFlight(req.params.id,req.body);
+        //whatever in req body will udpate those fields in flight
+        return res.status(SuccessCodes.CREATED).json({
+            data:result,
+            success:true,
+            message:"successfully updated the flight details",
+            err:{}
+        })
+    }catch(err){
+        return res.status(ServerErrorsCodes.INTERNAL_SERVER_ERROR).json({
+            data:{},
+            success:false,
+            message:"Not able to update the flight data",
+            err:err
+        })
+    }
+}
 module.exports={
     createFlight,
     getAllFlight,
-    getFlight
+    getFlight,
+    updateFlight
 }
